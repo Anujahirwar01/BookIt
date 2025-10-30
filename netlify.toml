@@ -1,0 +1,9 @@
+[build]
+  base = "client"
+  publish = "dist"
+  command = "npm run build"
+  functions = "client/netlify/functions"
+
+[context.production.environment]
+  # Set this in Netlify UI or update here before deploying
+  VITE_API_URL = "https://your-production-backend.com"

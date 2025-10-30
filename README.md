@@ -227,6 +227,44 @@ POST /api/bookings/create
 - **Backend:** Railway, Render, DigitalOcean, AWS
 - **Database:** MongoDB Atlas (recommended)
 
+### Netlify Deployment (recommended)
+
+If you want to deploy the frontend to Netlify (as in your request), here are the exact settings you provided and recommended values.
+
+- Team: `nde`
+- Site name: `highwaydeliteapp` (available)
+- Site URL (example): `https://highwaydeliteapp.netlify.app`
+- Branch to deploy: `main`
+- Base directory: `client` (where Netlify will install dependencies)
+- Build command: `npm run build` (runs in the base directory)
+- Publish directory: `dist` (Netlify publish path relative to the base dir)
+- Functions directory: `client/netlify/functions` (optional - used for Netlify Functions)
+
+Netlify deploy notes and steps:
+
+1. In Netlify, click "New site from Git" → connect your Git provider (GitHub) and authorize.
+2. Select the `Anujahirwar01/BookIt` repository and the `main` branch.
+3. Under "Build settings":
+   - Base directory: `client`
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+   - Functions directory (if using): `client/netlify/functions`
+4. Add the following environment variables in Netlify (Site Settings → Build & deploy → Environment):
+   - `VITE_API_URL` = `https://your-production-backend.com` (set this to your deployed backend API URL)
+   - `VITE_NODE_ENV` = `production`
+   - (Optional) `NODE_VERSION` or set an engines field in `package.json` if you need a specific Node version.
+5. Trigger a deploy. Netlify will run `npm install` and `npm run build` in the `client` directory and publish the `dist` folder.
+
+Troubleshooting & tips:
+
+- If your frontend builds locally on a different Node version, set an `engines.node` field in `client/package.json` or add a `.nvmrc` so Netlify uses the correct Node version.
+- If you need serverless functions, place them under `client/netlify/functions` and reference them via `/.netlify/functions/<name>`.
+- Ensure the backend CORS `FRONTEND_URL` is updated to the Netlify URL when you deploy the backend (or allow your production domain).
+- Use Netlify environment variables to keep production secrets out of the repo.
+
+Netlify `netlify.toml` (added to repo) sets base, command, publish and a placeholder production env var `VITE_API_URL`. Update it or manage env vars in Netlify UI.
+
+
 ## 🧪 Testing
 
 Run tests (when implemented):
