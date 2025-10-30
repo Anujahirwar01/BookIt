@@ -1,0 +1,13 @@
+{
+  "name": "bookit-root",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "build": "cd client && npm run build",
+    "start": "node server/server.js"
+  }
+}
