@@ -2,7 +2,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Header from './Header';
-import SearchSection from './SearchSection';
+// import SearchSection from './SearchSection';
 import FeaturedSection from './FeaturedSection';
 import Footer from './Footer';
 
