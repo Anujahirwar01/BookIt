@@ -6,7 +6,7 @@
 
 [context.production.environment]
   # Set this in Netlify UI or update here before deploying
-  VITE_API_URL = "https://your-production-backend.com"
+  VITE_API_URL = "https://bookit-lkut.onrender.com"
 
 [[redirects]]
   from = "/*"
